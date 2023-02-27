@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAT space</title>        
+</head>
+<body>
+
+    <img src="C:\Users\direw\Downloads\UATspaceLogo-2.jpg" alt="UAT Space Logo"> 
+
+<p>
+</p>
+    <font-size></font-size>
+<h2>"UAT Space Program"</h2>
+
+<h3>"Test of the document write function"</h3>
+
+<H3>"Test of the paragraph tags"</H3>
+</body>
+<head>
+<body>
+    <script type="text/javascript">
+        //intitalization of 10 in the p tag countdownlabel
+        var countDown= 10;
+        //show the initalization of 10 in the p tag
+            document.getElementById("countdownlabel").innerHTML= countDown;
+            //function called Blastoff to do work when start button is clicked
+function BlastOff()
+    {
+    	if(countDown !=-1)
+        //each time the user hits the start button then the label shows the number
+    {
+        document.getElementById("countdownlabel").innerHTML=countDown;
+    }
+    else
+    {
+        //is countdown =0 then unhide the blastoffLabel and show the user       
+    const blastoffview= document.getElementById("blastoffLabel");
+    blastoffView.style.display= "block";
+    }
+    //used to decrement or decrease the value of the countdown by one. notice at the end
+countDown--;
+    } 
+    </script>      
+        <script type="text/javascript">
+        //code below used to close the browser
+        function closeTheProgram()
+        {
+            this.close();
+        }        
+        </script>
+        </head>
+        <body>
+        <!--insert your image below change the width and height properties-->
+        <img width="200px" height="200px" src="C:\Users\direw\Downloads\shuttle.jpeg">
+        <!--p tag used to store count down information to the user-->
+       <p id="countdownlabel"></p>
+        <!--p tag hidden and disclosed to user when the count=0-->
+        <p id="blastoffLabel" hidden="hidden">BlastOff</p>
+        <!--b is used as a short cut id to indicate blastoff button-->
+        <button id="b" onclick="BlastOff()">Start</button>
+        <!--c id is a short cut to indicate to close or close buttob-->
+        <button id="c" onclick="closeTheProgram()">End</button>
+       
+</body>
+</html>
