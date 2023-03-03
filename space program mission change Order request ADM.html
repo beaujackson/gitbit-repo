@@ -1,0 +1,71 @@
+//David Austin
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAT space order request from Admiral</title>        
+   
+
+         <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg">
+            
+<h2>"UAT Space Program"</h2>
+
+<script type="text/javascript">
+    //initalization of 10 in the p tag countdownlabel
+    var countDownTime = 10;
+    
+    //function called Blastoff to do work when start button is clicked
+        function BlastOff(){
+            //show the initalization of 10 in the p tag
+
+    document.getElementById("countdownlabel").innerHTML = countDownTime;
+
+            var x = setInterval(function() {
+                var countDown = countDownTime--;
+
+                if (countDown < 5) {
+
+        document.getElementById("blastoffLabel").innerHTML="Warning, less than 1/2 way to launch" ;            
+                }
+
+                document.getElementById("countdownlabel").innerHTML=countDown;
+
+                if (countDown <=0) {
+                    clearInterval(x);
+
+        document.getElementById("blastoffLabel").innerHTML="BlastOff";
+                                    }
+                             }, 1000);
+                }
+
+        //code below used to close the browser
+        function closeTheProgram() {
+            this.close();
+        } 
+            </script>     
+        </head>
+        <body>
+            <!--this changes the font color to Aqua. i choose this inorder to see the writing-->
+            <font color="00ffff">
+            <img src="C:\Users\direw\Downloads\UATspaceLogo-2.jpg" alt="UAT Space Logo"/>
+            <h1>"UAT Space Program" </h1>
+            <h2>"Test of the document write function"</h2>
+            <h3>"Test of the paragraph tags"</h3> 
+            <!--insert your image below change the width and height properties-->
+            <img width="200px" height="200px"
+        src="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"/>        
+        <!--p tag used to store count down information to the user-->
+       <p id="countdownlabel"></p>
+        <!--p tag hidden and disclosed to user when the count=0-->
+        <p id="blastoffLabel"></p>
+        <br />
+         <!--b is used as a short cut id to indicate blastoff button-->
+        <button id="b" onclick="BlastOff()">Start</button>
+        <!--c id is a short cut to indicate to close or close button-->
+        <button id="c" onclick="closeTheProgram()">End</button>
+    </font>   
+</body>
+</html>
