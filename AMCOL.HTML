@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Austin</title>
+    <title> Assignment mission control Operator login</title>
+
+    <!--this here initiates javascript-->
+  <script type="text/javascript">
+    var divs = new Array();
+    divs[0] = "errFirst";
+    divs[1] = "errLast";
+    divs[2] = "errUid";
+
+  function validate()
+	{
+        var inputs = new Array();
+      inputs[0] = document.getElementById('first').value;
+      inputs[1] = document.getElementById('last').value;
+      inputs[2] = document.getElementById('badgeNumber').value;
+        //this is the warning that a field has not been filled out
+      var errors = new Array();
+      errors[0] = "<span style='color:red'>Please enter your first name!</span>";
+      errors[1] = "<span style='color:red'>Please enter your last name!</span>";
+      errors[2] = "<span style='color:red'>Please enter your user id!</span>";
+      
+
+      for (i in inputs)
+      {
+        var errMessage = errors[i];
+        var div = divs[i];
+        if (inputs[i] == "")
+        	document.getElementById(div).innerHTML = errMessage;
+        else if (i==2)
+        {
+          var atpos=inputs[i].indexOf("@");
+          var dotpos=inputs[i].lastIndexOf(".");
+          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inputs[i].length)
+        	document.getElementById(div).innerHTML = "OK!";
+        }
+        else if (i==5)
+        {        
+        	document.getElementById('errConfirm').innerHTML = "<span style='color: red'>Your passwords don't match!</span>";
+          else
+       		document.getElementById(div).innerHTML = "OK!";
+        }
+        else
+        	document.getElementById(div).innerHTML = "OK!";
+       }
+     }
+
+     function finalValidate()
+     {
+            var count = 0;
+          for(i=0;i<5;i++)
+          {
+            var div = divs[i];
+            if(document.getElementById(div).innerHTML == "OK!")
+            count = count + 1;
+          }
+          if(count == 5)
+          	document.getElementById("errFinal").innerHTML = "All the data you entered is correct!!!";
+     }    
+
+    function newValidate() {
+
+      document.getElementById("output").innerHTML = "";
+        //this is where first name are inputed into the progrm
+      var firstName = document.getElementById('first').value;
+      var lastName = document.getElementById('last').value;
+        //both first name and last name are combined together
+      var fullName = firstName + " " + lastName;
+        //max length of both first and last name is 20 characters
+      if (fullName.length > 20) {
+        document.getElementById("output").innerHTML = "Full name must be 20 characters or less!";
+        return;
+      }
+      //badge number is to be intered here with a max of 3 numbers
+      var badge = document.getElementById('badgeNumber').value;
+      if (is NaN(badge)) {
+        document.getElementById("output").innerHTML = "Badge Number must be numeric!";
+        return;
+      }
+      //combining of badge number and full name is show here
+      document.getElementById("output").innerHTML = badge + " " + fullName;
+    }
+    </script>
+</head>
+    <!--this is the back ground image for the site-->
+<body background="./nasa-sls-launch-pad-image.jpg">
+<!--the UAT Space logo is here -->
+    <img src="./UATspaceLogo-2.jpg" alt="UAT Space Logo" />
+        
+        <!-- <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"> -->
+         <!--image above this line is a image of the SLS prior to launch-->   
+        <h1 align="center">
+        <!-- this color is aqua and the text is centered-->
+        <!-- 
+          This line has a couple of problems.  The value of color needs to be in quotes. Your <font> tag is closed later on where it doesn't complete the open tag correctly.
+          I moved the close font tag. -->
+        <p><font color="#00ffff">Welcome to the Universityof Advancing Technology</p> 
+        </h1>
+        <p><h2>Please log in</h2></p>
+        <title>Form Validation</title>
+        </font>
+        <!--below is where data is inputed using form element-->
+    <form>
+        <!--the element table is used for the lines to be filled-->
+  	<table id="table1">
+      <tr>
+        <td>First Name:</td>
+        <td><input type="text" id="first" /></td>
+        <td><div id="errFirst"></div></td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" id="last" /></td>
+        <td><div id="errLast"></div></td>
+      </tr>
+      <tr>
+        <td>Badge Number:</td>
+        <td><input type="text" id="badgeNumber" /></td>
+        <td><div id="errBadgeNumber"></div></td>
+      </tr>
+      <tr>
+        <td><input type="button" id="create" value="Create" onclick="newValidate();"/></td>
+        <td><font color="red"><div id="output"></div></font></td> 
+      </tr>
+	</table>
+</form>
+
+
+</body>
+</html>
