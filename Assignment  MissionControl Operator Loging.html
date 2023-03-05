@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<!--
+I'm putting some notes here. :)  I'm also putting notes inline in your code.
+
+I think you mentioned you're using VS Code?  
+There is an extension you can download called "HTMLHint", that will help you identify potential problems in your code.
+It will put little squigly lines underneath anything it thinks is problematic.
+
+Header tags (<h1>, <h2>, etc.) behave just like paragraph tags (<p>), so it's not necessary to nest one within the other.
+Ex:
+<h1>This is my title</h>
+Is the same thing as:
+<h1><p>This is my title</p></h1>
+Is the same thing as:
+<p><h1>This is my title</h1></p>
+Any of those will work, so it's not really wrong, it's just extra stuff - less is more.
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,22 +23,11 @@
     <title>David Austin</title>
     <title> Assignment mission control Operator login</title>
 
-</head>
-
-
-<body>
-
-    <img src="C:\Users\direw\Downloads\UATspaceLogo-2.jpg" alt="UAT Space Logo">
-
-        <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg">
-         <!--image above this line is a image of the SLS prior to launch-->   
-        <h1 align = "center">
-         <!-- this color is aqua and the text is centered-->   
-        <p><font color =#00ffff>Welcome to the Universityof Advancing Technology</p>
-        </h1>
-        <p><h2>Please log in</h2></p></font> 
-
-        <title>Form Validation</title>
+  <!-- 
+    I moved your <script> into the <head> which is a more standard place for it.  
+    You can put <script> tags inline, and sometimes there are good reasons to do that.  
+    For your code, it just gets the script out of the way, so you can better see all of your html code in one place. 
+  -->
   <script type="text/javascript">
     var divs = new Array();
     divs[0] = "errFirst";
@@ -30,20 +35,27 @@
     divs[2] = "errUid";
     divs[3] = "errPassword";
     divs[4] = "errConfirm";
-    function validate()
+
+  //I ended up removing the need for the validate() function. This was kind of over-kill (copied from an online example somewhere?).
+  function validate()
 	{
         var inputs = new Array();
       inputs[0] = document.getElementById('first').value;
       inputs[1] = document.getElementById('last').value;
-      inputs[2] = document.getElementById('uid').value;
-      inputs[3] = document.getElementById('password').value;
-      inputs[4] = document.getElementById('confirm').value;
+      inputs[2] = document.getElementById('badgeNumber').value;
+      //un-needed field
+      //inputs[3] = document.getElementById('password').value;
+      //un-needed field
+      //inputs[4] = document.getElementById('confirm').value;
       var errors = new Array();
       errors[0] = "<span style='color:red'>Please enter your first name!</span>";
       errors[1] = "<span style='color:red'>Please enter your last name!</span>";
       errors[2] = "<span style='color:red'>Please enter your user id!</span>";
-      errors[3] = "<span style='color:red'>Please enter your password!</span>";
-      errors[4] = "<span style='color:red'>Please confirm your password!</span>";
+      //un-needed field
+      //errors[3] = "<span style='color:red'>Please enter your password!</span>";
+      //un-needed field
+      //errors[4] = "<span style='color:red'>Please confirm your password!</span>";
+
       for (i in inputs)
       {
         var errMessage = errors[i];
@@ -55,7 +67,7 @@
           var atpos=inputs[i].indexOf("@");
           var dotpos=inputs[i].lastIndexOf(".");
           if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inputs[i].length)
-          else
+          // else <-- this else looks like it was not supposed to be here?
         	document.getElementById(div).innerHTML = "OK!";
         }
         else if (i==5)
@@ -71,8 +83,9 @@
         	document.getElementById(div).innerHTML = "OK!";
        }
      }
-        function finalValidate()
-        {
+
+     function finalValidate()
+     {
             var count = 0;
           for(i=0;i<5;i++)
           {
@@ -82,26 +95,85 @@
           }
           if(count == 5)
           	document.getElementById("errFinal").innerHTML = "All the data you entered is correct!!!";
-        }    
+     }    
+
+    function newValidate() {
+
+      //clear any output from any previous call of the function
+      document.getElementById("output").innerHTML = "";
+
+      var firstName = document.getElementById('first').value;
+      var lastName = document.getElementById('last').value;
+
+      var fullName = firstName + " " + lastName;
+
+      if (fullName.length > 20) {
+        document.getElementById("output").innerHTML = "Full name must be 20 characters or less!";
+        return;
+      }
+
+      var badge = document.getElementById('badgeNumber').value;
+      if (isNaN(badge)) {
+        document.getElementById("output").innerHTML = "Badge Number must be numeric!";
+        return;
+      }
+
+      document.getElementById("output").innerHTML = badge + " " + fullName;
+    }
     </script>
 </head>
-<body>
-	<table id="table1">
+
+<!-- Your background value is pointing to a file that exists only on your machine.  
+  A better approach to this sort of thing is to include the image in your source code repo,
+  and then use a relative path.  If you put nasa-sls-launch-pad-image.jpg in the same folder as this html file,
+  your src value would just be "./nasa-sls-launch-pad-image.jpg".
+  I downloaded a couple of images with the same file name and added them just to demonstrate.
+
+  Also, when specifying a path to a file, backslashes "\" are very Windows specific, while Windows and Linux both support forward slashes "/".  Using forward slashes in javascript is a good habit.
+-->
+<body background="./nasa-sls-launch-pad-image.jpg">
+
+    <!-- Same comment as above for the src value -->
+    <img src="./UATspaceLogo-2.jpg" alt="UAT Space Logo" /><!-- tag not closed -->
+
+        
+        <!-- <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"> --><!-- I removed this line because you already have a <body> tag on line 20. I added your background value to line 20 also. -->
+         <!--image above this line is a image of the SLS prior to launch-->   
+        <h1 align="center">
+        <!-- this color is aqua and the text is centered-->
+        <!-- 
+          This line has a couple of problems.  The value of color needs to be in quotes. Your <font> tag is closed later on where it doesn't complete the open tag correctly.
+          I moved the close font tag. -->
+        <p><font color="#00ffff">Welcome to the Universityof Advancing Technology</font></p> 
+        </h1>
+        <p><h2>Please log in</h2></p><!--</font> this does not go here -->
+
+        <title>Form Validation</title>
+
+<!-- </head> --><!-- commented out duplicate close tag -->
+<!-- <body> --><!-- commented out duplicate body tag -->
+
+  <!-- Pro Tip said to put all input boxes and buttons inside one form. -->
+  <form>
+  	<table id="table1">
       <tr>
         <td>First Name:</td>
-        <td><input type="text" id="first" onkeyup="validate();" /></td>
+        <td><input type="text" id="first" /></td><!-- removed call to validate in onkeyup event -->
         <td><div id="errFirst"></div></td>
       </tr>
       <tr>
         <td>Last Name:</td>
-        <td><input type="text" id="last" onkeyup="validate();"/></td>
+        <td><input type="text" id="last" /></td><!-- removed call to validate in onkeyup event -->
         <td><div id="errLast"></div></td>
       </tr>
       <tr>
-        <td>User Id:</td>
-        <td><input type="text" id="uid" onkeyup="validate();"/></td>
-        <td><div id="errUid"></div></td>
+        <td>Badge Number:</td><!-- changed text to Badge Number -->
+        <td><input type="text" id="badgeNumber" /></td><!-- removed call to validate in onkeyup event.  instructions want badge number. -->
+        <td><div id="errBadgeNumber"></div></td><!-- renamed to badge number -->
       </tr>
+
+      <!-- 
+        Removed password and confirm password inputs, as instructions did not ask for these.  There's nothing wrong with this code, just not part of the instructions.
       <tr>
         <td>Password:</td>
         <td><input type="password" id="password" onkeyup="validate();"/></td>
@@ -112,12 +184,14 @@
         <td><input type="password" id="confirm" onkeyup="validate();"/></td>
         <td><div id="errConfirm"></div></td>
       </tr>
+      -->
+      
       <tr>
-        <td><input type="button" id="create" value="Create" onclick="validate();finalValidate();"/></td>
-        <td><div id="errFinal"></div></td>
+        <td><input type="button" id="create" value="Create" onclick="newValidate();"/></td><!-- removed validate() and finalValidate().  Changed it to newValidate() so you could see your original code.-->
+        <td><font color="red"><div id="output"></div></font></td> <!-- I changed the text to red just so it would stand out better on the background image I chose. -->
       </tr>
 	</table>
-
+</form>
 
 
 </body>
