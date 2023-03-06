@@ -25,8 +25,6 @@
       errors[0] = "<span style='color:red'>Please enter your first name!</span>";
       errors[1] = "<span style='color:red'>Please enter your last name!</span>";
       errors[2] = "<span style='color:red'>Please enter your user id!</span>";
-      
-
       for (i in inputs)
       {
         var errMessage = errors[i];
@@ -42,8 +40,6 @@
         }
         else if (i==5)
         {        
-        	document.getElementById('errConfirm').innerHTML = "<span style='color: red'>Your passwords don't match!</span>";
-          else
        		document.getElementById(div).innerHTML = "OK!";
         }
         else
@@ -77,11 +73,16 @@
         document.getElementById("output").innerHTML = "Full name must be 20 characters or less!";
         return;
       }
-      //badge number is to be intered here with a max of 3 numbers
+      //badge number is to be entered here with a max of 3 numbers
       var badge = document.getElementById('badgeNumber').value;
-      if (is NaN(badge)) {
-        document.getElementById("output").innerHTML = "Badge Number must be numeric!";
-        return;
+      if (isNaN(badgeNumber)){
+        document.getElementById(output).innerHTML ="badge if must be a number"
+      }       
+      {
+      if (badgeNumber.length < 3);
+      }
+        document.getElementById(output).innerHTML = "Badge Id must be 3 digits"
+      return;
       }
       //combining of badge number and full name is show here
       document.getElementById("output").innerHTML = badge + " " + fullName;
@@ -93,18 +94,15 @@
 <!--the UAT Space logo is here -->
     <img src=".gitbit-repo/UATspaceLogo-2.jpg" alt="UAT Space Logo" />
         
-        <!-- <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"> -->
+       <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"> 
          <!--image above this line is a image of the SLS prior to launch-->   
         <h1 align="center">
         <!-- this color is aqua and the text is centered-->
-        <!-- 
-          This line has a couple of problems.  The value of color needs to be in quotes. Your <font> tag is closed later on where it doesn't complete the open tag correctly.
-          I moved the close font tag. -->
-        <p><font color="#00ffff">Welcome to the Universityof Advancing Technology</p> 
+      
+        <p><font color="#00ffff">Welcome to the Universityof Advancing Technology</font></p>
         </h1>
-        <p><h2>Please log in</h2></p>
+        <p><font color="#00ffff"><h2>Please log in</h2></font></p>
         <title>Form Validation</title>
-        </font>
         <!--below is where data is inputed using form element-->
     <form>
         <!--the element table is used for the lines to be filled-->
@@ -130,7 +128,6 @@
       </tr>
 	</table>
 </form>
-
 
 </body>
 </html>
