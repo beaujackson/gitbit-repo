@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Austin</title>
+    <title2>Assignment: Mission Control Operator Log in</title2>
+
+</head>
+
+<body>
+    <h1 align = "center">
+    <p><font color="00ffff">Welcome to the University of Advancing Technology</font></p>
+    </h1>
+    <img src="C:\Users\direw\Downloads\UATspaceLogo-2.jpg">
+    <h2>Please Log In</h2>
+
+    <script type="text/javascript">
+        var divs = new Array();
+        divs[0] = "errFirst";
+        divs[1] = "errLast";
+        divs[2] = "errUserId";
+
+        // function validate() {
+
+        //     var inputs = new Array();
+        //     inputs[0] = document.getElementById("first").value;
+        //     inputs[1] = document.getElementById("last").value;
+        //     inputs[2] = document.getElementById("userid").value;
+        //     var errors = new Array();
+        //     errors[0] = "<span style='color:red'>Please enter your first name!</span>";
+        //     errors[1] = "<span style='color:red'>Please enter your last name!</span>";
+        //     errors[2] = "<span style='color:red'>Please enter your user id!</span>";
+        //     for (i in inputs)
+        //     {
+        //         var result =error[i] ("Please enter your ??? ")
+        //         var div = divs[i];
+        //         if (inputs[i] == "")
+        //         document.getElementById(div).innerHTML =errMessage;
+        //         else if (i==3)
+                               
+        //     }
+        // }
+            function setOutput(message) {
+                document.getElementById("output").innerHTML = message;
+            }
+
+            function newValidate() {
+                document.getElementById("output").innerHTML = "";
+
+                //this is where the first name is inputed
+                var firstName = document.getElementById("first").value;
+                var lastName = document.getElementById("last").value;
+                var userId = document.getElementById("userID").value;
+
+                if (firstName.length == 0) {
+                    setOutput("First Name must be specified");
+                    return;
+                }
+
+                if (lastName.length == 0) {
+                    setOutput("Last Name must be specified");
+                    return;
+                }
+
+                if (userId.length == 0) {
+                    setOutput("user id must be specified");
+                    return;
+                }
+
+                //both first and last names are combined
+                var fullName = firstName + " " + lastName;
+                
+                //length os both first name and last name may not be longer than 20 charecters
+                if (fullName.length > 20 ){
+                    setOutput("full name must be 20 charecters or less!");
+                    return;
+                }
+
+                //user Id is to be entered here with a max of 3 digits
+                if (isNaN(userId) ){
+                    setOutput("user id is must be a number");
+                    return;
+                }
+
+                if (userId.length > 3) {
+                    setOutput("user id must be 3 digits");
+                    return;
+                }
+
+                //combining of user id and full name is shown here
+                setOutput(userId + " " + fullName);
+            }
+
+
+
+            
+        </script>
+    <!--this is the background image for the site-->
+    <body background="C:\Users\direw\Downloads\nasa-sls-launch-pad-image.jpg"></body>
+
+    <h2>Form Validation</h2>
+    <!--below is where data is inputed form element-->
+            <form>
+                <table id="table1">
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input type="text" id="first" /> </td>
+                        <td><div id="errfirst"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td><input typee="text" id="last" /></td>
+                        <td><div id="errLast"></div></td>
+                    </tr>
+                    <tr>
+                        <td> User Id:</td>
+                        <td><input type="text" id="userID"></td>
+                        <td><div id="errUserId"></div></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" id="create" value="Create" onclick="newValidate();"></td>
+                        <td><font color="red"><div id="output"></div></font></td>
+                    </tr>
+                </table>
+            </form>
+
+
+
+</body>
+</html>
